@@ -342,6 +342,48 @@ function() {
 }(),
 function() {
     "use strict";
+    var Text = Darkroom.Transformation.extend({
+        applyTransformation: function(canvas, image, next) {
+            var angle = (image.getAngle() + this.options.angle) % 360;
+            image.rotate(angle);
+            var width, height;
+            height = Math.abs(image.getWidth() * Math.sin(angle * Math.PI / 180)) + Math.abs(image.getHeight() * Math.cos(angle * Math.PI / 180));
+            width = Math.abs(image.getHeight() * Math.sin(angle * Math.PI / 180)) + Math.abs(image.getWidth() * Math.cos(angle * Math.PI / 180));
+            canvas.setWidth(width);
+            canvas.setHeight(height);
+            canvas.centerObject(image);
+            image.setCoords();
+            canvas.renderAll();
+            next();
+        }
+    });
+    Darkroom.plugins.rotate = Darkroom.Plugin.extend({
+        initialize: function() {
+            var buttonGroup = this.darkroom.toolbar.createButtonGroup(),
+                leftButton = buttonGroup.createButton({
+                    image: "rotate-left"
+                }),
+                rightButton = buttonGroup.createButton({
+                    image: "rotate-right"
+                });
+            leftButton.addEventListener("click", this.rotateLeft.bind(this));
+            rightButton.addEventListener("click", this.rotateRight.bind(this));
+        },
+        rotateLeft: function() {
+            this.rotate(-90)
+        },
+        rotateRight: function() {
+            this.rotate(90)
+        },
+        rotate: function(angle) {
+            this.darkroom.applyTransformation(new Rotation({
+                angle: angle
+            }))
+        }
+    })
+}(),
+function() {
+    "use strict";
     var Crop = Darkroom.Transformation.extend({
             applyTransformation: function(canvas, image, next) {
                 var snapshot = new Image;

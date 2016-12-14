@@ -129,3 +129,21 @@ h1 {
 .image-container .image-meta a:hover .image-meta-title {
   text-decoration: underline;
 }
+
+.inspectorWrapper
+{
+    position: fixed;
+    background: rgba(0,0,0,.7);
+    height: auto;
+    width: 100%;
+    bottom: 0px;
+}
+
+.inspector
+{
+  display: none;
+  height: auto;
+  width: 100%;
+  bottom: 0px;
+  min-height: 100px;
+}
