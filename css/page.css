@@ -135,6 +135,7 @@ h1 {
     position: fixed;
     background: rgba(0,0,0,.7);
     height: auto;
+    color: white;
     width: 100%;
     bottom: 0px;
 }
@@ -146,4 +147,16 @@ h1 {
   width: 100%;
   bottom: 0px;
   min-height: 100px;
+}
+
+.darkroom-button
+{
+  vertical-align: top;
+}
+
+.darkroom-icon.fa
+{
+    line-height: 50px;
+    font-size: 30px;
+    color: white;
 }
