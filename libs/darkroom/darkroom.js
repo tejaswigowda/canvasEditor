@@ -294,10 +294,13 @@ function(window, document, Darkroom, fabric) {
             var buttonGroup = this.darkroom.toolbar.createButtonGroup();
             return this.backButton = buttonGroup.createButton({
                 image: "undo",
-                disabled: !0
+                disabled: !0,
+                iconClass: 'fa fa-backward'
+
             }), this.forwardButton = buttonGroup.createButton({
                 image: "redo",
-                disabled: !0
+                disabled: !0,
+                iconClass: 'fa fa-forward'
             }), this.backButton.addEventListener("click", this.undo.bind(this)), this.forwardButton.addEventListener("click", this.redo.bind(this)), this
         },
         _updateButtons: function() {
@@ -352,6 +355,7 @@ function() {
         }
     })
 }(),
+/*
 function() {
     "use strict";
     var FreeHand = Darkroom.Transformation.extend({
@@ -386,7 +390,7 @@ function() {
             }))
         }
     })
-}(),
+}(),*/
 function() {
     "use strict";
     var Crop = Darkroom.Transformation.extend({

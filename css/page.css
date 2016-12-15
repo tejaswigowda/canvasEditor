@@ -160,3 +160,32 @@ h1 {
     font-size: 30px;
     color: white;
 }
+
+
+.greenColor
+{
+  color: green;
+}
+
+.redColor
+{
+  color: red;
+}
+
+.blueColor
+{
+  color: blue;
+}
+
+
+.darkroom-button.darkroom-button-active .darkroom-icon{
+   color: skyblue;
+}
+
+.darkroom-button-success span.darkroom-icon {
+   color: lightgreen;
+}
+
+.darkroom-button-danger span.darkroom-icon {
+   color: lightred;
+}
