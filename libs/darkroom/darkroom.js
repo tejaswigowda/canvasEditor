@@ -355,7 +355,6 @@ function() {
         }
     })
 }(),
-/*
 function() {
     "use strict";
     var FreeHand = Darkroom.Transformation.extend({
@@ -381,8 +380,12 @@ function() {
                     iconClass: 'fa fa-pencil'
 
                 });
-            leftButton.addEventListener("click", this.doFreeHand.bind(this));
+            //leftButton.addEventListener("click", this.doFreeHand.bind(this));
+           left.freeHandButton.addEventListener("click", this.toggleFH.bind(this));
             //rightButton.addEventListener("click", this.rotateRight.bind(this));
+        },
+        toggleFH: function() {
+            this.hasFocus() ? this.releaseFocus() : this.requireFocus()
         },
         doFreeHand: function() {
             this.darkroom.applyTransformation(new FreeHand({
@@ -390,7 +393,7 @@ function() {
             }))
         }
     })
-}(),*/
+}(),
 function() {
     "use strict";
     var Crop = Darkroom.Transformation.extend({
@@ -477,7 +480,8 @@ function() {
             this.cropButton = buttonGroup.createButton({
                 image: "crop",
                 iconClass: 'fa fa-crop'
-            }), this.okButton = buttonGroup.createButton({
+            }), 
+            this.okButton = buttonGroup.createButton({
                 image: "done",
                 type: "success",
                 hide: !0,
