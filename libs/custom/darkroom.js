@@ -357,23 +357,13 @@ function() {
 }(),
 function() {
     "use strict";
-    /*
     var FreeHand = Darkroom.Transformation.extend({
         applyTransformation: function(canvas, image, next) {
-            var angle = (image.getAngle() + this.options.angle) % 360;
-            image.rotate(angle);
-            var width, height;
-            height = Math.abs(image.getWidth() * Math.sin(angle * Math.PI / 180)) + Math.abs(image.getHeight() * Math.cos(angle * Math.PI / 180));
-            width = Math.abs(image.getHeight() * Math.sin(angle * Math.PI / 180)) + Math.abs(image.getWidth() * Math.cos(angle * Math.PI / 180));
-            canvas.setWidth(width);
-            canvas.setHeight(height);
-            canvas.centerObject(image);
-            image.setCoords();
             canvas.renderAll();
             next();
         }
     });
-   */
+  
     Darkroom.plugins.freeHand = Darkroom.Plugin.extend({
         initialize: function() {
             var buttonGroup = this.darkroom.toolbar.createButtonGroup(),
@@ -386,9 +376,11 @@ function() {
            leftButton.addEventListener("click", this.toggleFH.bind(this));
             //rightButton.addEventListener("click", this.rotateRight.bind(this));
         },
+        hasFocus: false,
         toggleFH: function() {
-            alert("1");
-            this.hasFocus() ? this.releaseFocus() : this.requireFocus()
+            toggleFreeHand();
+            //alert("1");
+            //this.hasFocus() ? this.releaseFocus() : this.requireFocus()
         }
     })
 }(),

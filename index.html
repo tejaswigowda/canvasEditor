@@ -1,35 +1,34 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Canvas Editor</title>
-  <link rel="stylesheet" href="./libs/darkroom/darkroom.css">
-  <link rel="stylesheet" href="./css/page.css">
-  <script
-          src="https://code.jquery.com/jquery-3.1.1.min.js"
-          integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-          crossorigin="anonymous"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Canvas Editor</title>
+    <link rel="stylesheet/less" type="text/css" href="libs/custom/custom.less" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>
+
 <body>
-<div id="content">
-  <div class="container">
-    <section class="copy">
-      <div class="figure-wrapper">
-        <figure class="image-container target">
-          <img src="" crossorigin='anonymous' alt="" id="target">
-        </figure>
-      </div>
-    </section>
-  </div>
-</div>
 
+    <div id="content">
+                            <div class="toolbar">
+                                <div class="button-group"><button type="button" class="button button-default"><span class="icon fa fa-backward"></span></button><button type="button" class="button button-default" disabled=""><span class="icon fa fa-forward"></span></button></div>
+                                <div class="button-group"><button type="button" class="button button-default"><span class="icon fa fa-undo"></span></button><button type="button" class="button button-default"><span class="icon fa fa-repeat"></span></button></div>
+                                <div class="button-group"><button type="button" class="button button-default"><span class="icon fa fa-pencil"></span></button></div>
+                                <div class="button-group"><button type="button" class="button button-default button-active"><span class="icon fa fa-crop"></span></button><button type="button" class="button button-success"><span class="icon fa fa-check"></span></button><button type="button" class="button button-danger"><span class="icon fa fa-times"></span></button></div>
+                            </div>
+                            <div class="image-container">
+                              <canvas id='theCanvas'> </canvas>
+                            </div>
+        </div>
 
-<div class='inspectorWrapper'>
-  <div class='inspector' id='freeDrawing'>
-    <label for="drawing-mode-selector">Mode:</label>
-    <select id="drawing-mode-selector">
+        <div class='inspectorWrapper'>
+            <div class='inspector' id='freeDrawing'>
+                <label for="drawing-mode-selector">Mode:</label>
+                <select id="drawing-mode-selector">
       <option>Pencil</option>
       <option>Circle</option>
       <option>Spray</option>
@@ -42,94 +41,99 @@
       <option>texture</option>
     </select><br>
 
-    <label for="drawing-line-width">Line width:</label>
-    <span class="info">30</span><input type="range" value="30" min="0" max="150" id="drawing-line-width"><br>
+                <label for="drawing-line-width">Line width:</label>
+                <span class="info">30</span><input type="range" value="30" min="0" max="150" id="drawing-line-width"><br>
 
-    <label for="drawing-color">Line color:</label>
-    <input type="color" value="#005E7A" id="drawing-color"><br>
+                <label for="drawing-color">Line color:</label>
+                <input type="color" value="#005E7A" id="drawing-color"><br>
 
-    <label for="drawing-shadow-color">Shadow color:</label>
-    <input type="color" value="#005E7A" id="drawing-shadow-color"><br>
+                <label for="drawing-shadow-color">Shadow color:</label>
+                <input type="color" value="#005E7A" id="drawing-shadow-color"><br>
 
-    <label for="drawing-shadow-width">Shadow width:</label>
-    <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-width"><br>
+                <label for="drawing-shadow-width">Shadow width:</label>
+                <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-width"><br>
 
-    <label for="drawing-shadow-offset">Shadow offset:</label>
-    <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-offset"><br>
-
-
-  </div>
-
-  <div class='inspector' id='freeDrawingText'>
-  </div>
-
-</div>
-
-<script src="./libs/fabric/fabric.js"></script>
-<script src="./libs/darkroom/darkroom.js"></script>
-<script src="./libs/darkroom/darkroom++.js"></script>
-
-<script>
-    function convertImgToDataURLviaCanvas(url, callback){
-        var img = new Image();
-        img.crossOrigin = 'Anonymous';
-        img.onload = function(){
-            var canvas = document.createElement('CANVAS');
-            var ctx = canvas.getContext('2d');
-            canvas.height = this.height;
-            canvas.width = this.width;
-            var compositeOperation = ctx.globalCompositeOperation;
-            ctx.globalCompositeOperation = "destination-over";
-            ctx.fillStyle = "rgba(0,0,0,0)";
-            ctx.drawImage(this, 0, 0);
-            var dataURL = canvas.toDataURL("png");
-            callback(dataURL);
-            canvas = null;
-        };
-        img.src = url;
-    }
+                <label for="drawing-shadow-offset">Shadow offset:</label>
+                <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-offset"><br>
 
 
-    var url = window.location.hash.replace("#","");
-    document.getElementById("target").src = url;
-    var dkrm;
-    setTimeout("sstart()", 300);
-    function sstart(){
-        dkrm = new Darkroom('#target', {
-            // Size options
-            minWidth: 200,
-            minHeight: 200,
-            maxWidth: window.innerWidth*.9,
-            maxHeight: window.innerHeight*.9,
-            // ratio: 4/3,
-            backgroundColor: 'transparent',
+            </div>
 
-            // Plugins options
-            plugins: {
-                save: false,
-                crop: {
-                    quickCropKey: 67, //key "c"
-                    minHeight: 50,
-                    minWidth: 50,
-                    //ratio: 4/3
-                }
-            },
+            <div class='inspector' id='freeDrawingText'>
+            </div>
 
-            // Post initialize script
-            initialize: function() {
-                sessionStorage.setItem("ie-data",dkrm.canvas.toDataURL());
-                var cropPlugin = this.plugins['crop'];
-                // cropPlugin.selectZone(170, 25, 300, 300);
-                //cropPlugin.requireFocus();
-                this.addEventListener('core:transformation', function() {
-                    sessionStorage.setItem("ie-data",dkrm.canvas.toDataURL());
-                    sessionStorage.setItem("ie-smp", "true");
+        </div>
+
+        <script src="./libs/fabric/fabric.js"></script>
+        <script src="./libs/darkroom/darkroom.js"></script>
+        <script src="./libs/darkroom/basics.js"></script>
+        <script src="./libs/darkroom/freeHand.js"></script>
+
+        <script>
+            function convertImgToDataURLviaCanvas(url, callback) {
+                var img = new Image();
+                img.crossOrigin = 'Anonymous';
+                img.onload = function() {
+                    var canvas = document.createElement('CANVAS');
+                    var ctx = canvas.getContext('2d');
+                    canvas.height = this.height;
+                    canvas.width = this.width;
+                    var compositeOperation = ctx.globalCompositeOperation;
+                    ctx.globalCompositeOperation = "destination-over";
+                    ctx.fillStyle = "rgba(0,0,0,0)";
+                    ctx.drawImage(this, 0, 0);
+                    var dataURL = canvas.toDataURL("png");
+                    callback(dataURL);
+                    canvas = null;
+                };
+                img.src = url;
+            }
+
+
+            var url = window.location.hash.replace("#", "");
+            /*document.getElementById("target").src = url;
+            var dkrm;
+            setTimeout("sstart()", 300);
+            */
+
+            var theCanvas = new fabric.Canvas('theCanvas');
+
+            function sstart() {
+                dkrm = new Darkroom('#target', {
+                    // Size options
+                    minWidth: 200,
+                    minHeight: 200,
+                    maxWidth: window.innerWidth * .9,
+                    maxHeight: window.innerHeight * .9,
+                    // ratio: 4/3,
+                    backgroundColor: 'transparent',
+
+                    // Plugins options
+                    plugins: {
+                        save: false,
+                        crop: {
+                            quickCropKey: 67, //key "c"
+                            minHeight: 50,
+                            minWidth: 50,
+                            //ratio: 4/3
+                        }
+                    },
+
+                    // Post initialize script
+                    initialize: function() {
+                        sessionStorage.setItem("ie-data", dkrm.canvas.toDataURL());
+                        var cropPlugin = this.plugins['crop'];
+                        // cropPlugin.selectZone(170, 25, 300, 300);
+                        //cropPlugin.requireFocus();
+                        this.addEventListener('core:transformation', function() {
+                            sessionStorage.setItem("ie-data", dkrm.canvas.toDataURL());
+                            sessionStorage.setItem("ie-smp", "true");
+                        });
+                    }
                 });
             }
-        });
-    }
-
-</script>
+        </script>
 
 </body>
+
 </html>

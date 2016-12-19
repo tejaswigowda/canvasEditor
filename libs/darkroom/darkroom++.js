@@ -1,9 +1,0 @@
-function freeHandActive()
-{
-  
-}
-
-function freeHandActive()
-{
-  
-}
