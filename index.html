@@ -14,58 +14,23 @@
 <body>
 
     <div id="content">
-                            <div class="toolbar">
-                                <div class="button-group"><button type="button" class="button button-default"><span class="icon fa fa-backward"></span></button><button type="button" class="button button-default" disabled=""><span class="icon fa fa-forward"></span></button></div>
-                                <div class="button-group"><button type="button" class="button button-default"><span class="icon fa fa-undo"></span></button><button type="button" class="button button-default"><span class="icon fa fa-repeat"></span></button></div>
-                                <div class="button-group"><button type="button" class="button button-default"><span class="icon fa fa-pencil"></span></button></div>
-                                <div class="button-group"><button type="button" class="button button-default button-active"><span class="icon fa fa-crop"></span></button><button type="button" class="button button-success"><span class="icon fa fa-check"></span></button><button type="button" class="button button-danger"><span class="icon fa fa-times"></span></button></div>
+                            <div id='toolbar' class="toolbar">
+                            </div>
+                            <div id='header' class="toolbar">
+                              <button onclick='header.close()'> <i class="fa fa-times" aria-hidden="true"></i> </button><span class='title' id='headerTitle'> </span>
                             </div>
                             <div class="image-container">
                               <canvas id='theCanvas'> </canvas>
                             </div>
         </div>
 
-        <div class='inspectorWrapper'>
-            <div class='inspector' id='freeDrawing'>
-                <label for="drawing-mode-selector">Mode:</label>
-                <select id="drawing-mode-selector">
-      <option>Pencil</option>
-      <option>Circle</option>
-      <option>Spray</option>
-      <option>Pattern</option>
-
-      <option>hline</option>
-      <option>vline</option>
-      <option>square</option>
-      <option>diamond</option>
-      <option>texture</option>
-    </select><br>
-
-                <label for="drawing-line-width">Line width:</label>
-                <span class="info">30</span><input type="range" value="30" min="0" max="150" id="drawing-line-width"><br>
-
-                <label for="drawing-color">Line color:</label>
-                <input type="color" value="#005E7A" id="drawing-color"><br>
-
-                <label for="drawing-shadow-color">Shadow color:</label>
-                <input type="color" value="#005E7A" id="drawing-shadow-color"><br>
-
-                <label for="drawing-shadow-width">Shadow width:</label>
-                <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-width"><br>
-
-                <label for="drawing-shadow-offset">Shadow offset:</label>
-                <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-offset"><br>
-
-
-            </div>
-
-            <div class='inspector' id='freeDrawingText'>
-            </div>
+        <div id='inspectorWrapper' class='inspectorWrapper'>
 
         </div>
 
         <button onclick='showInsp()' id='showInsp'> <i class="fa fa-sliders" aria-hidden="true"></i></button>
         <script src="./libs/fabric/fabric.js"></script>
+        <script src="./libs/custom/init.js"></script>
         <script src="./libs/custom/basics.js"></script>
         <script src="./libs/custom/freeHand.js"></script>
 

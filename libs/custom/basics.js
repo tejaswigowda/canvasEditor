@@ -1,15 +1,21 @@
 /*Basics*/
-var header = {
-  set: function(mu){
+var PATH = "libs/custom/";
+var inspectorDisp = {
+  show: function(mu){
     mu = mu || "";
-    var t = "<button onclick='header.close()'><i class='fa fa-times'></i></button>" + mu;
-    document.body.innerHTML += t;
-  },
-  remove: function(){
+    $(".inspector").hide();
+    $("#insp-" + mu).stop().show();
+  }
+}
+
+var header = {
+  show: function(mu){
+    mu = mu || "";
+    document.getElementById("headerTitle").innetHTML = mu;
+    $("#header").slideDown();
   },
   close: function(){
-      $(".header").remove();
-      $(".inspector").slideDown();
+     $("#header").slideUp();
   }
 }
 
