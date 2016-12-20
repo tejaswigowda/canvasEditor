@@ -14,3 +14,8 @@ var header = {
 }
 
 
+function showInsp()
+{
+  $("body").toggleClass("showInsp");
+}
+

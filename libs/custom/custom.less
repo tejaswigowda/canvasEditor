@@ -12,6 +12,11 @@ body {
   background-size: 20px;
 }
 
+.canvas-container {
+      margin: auto;
+}
+
+
 a {
   text-decoration: none;
   color: #0099CC;
@@ -78,7 +83,7 @@ figure {
 }
 
 #content {
-  margin: 20px 0 40px;
+  margin: 60px 0 40px;
 }
 
 h1 {
@@ -105,11 +110,10 @@ h1 {
   text-align: center;
 }
 
+
 .image-container {
   display: inline-block;
   max-width: 100%;
-  padding: 10px;
-  margin: 5px 0;
 }
 
 .image-container.target {
@@ -140,7 +144,10 @@ h1 {
     height: auto;
     color: white;
     width: 100%;
-    bottom: 0px;
+    top: 0px;
+    display: none;
+    min-height: 100%;
+    right: 0px;
 }
 
 .inspector
@@ -302,3 +309,49 @@ h1 {
     height: 50px;
     fill: #fff
 }
+
+@media (max-width: 600px) {
+  /*split-screen*/
+  .showInsp{
+    .inspectorWrapper
+    {
+      width: 100%;
+      display: block;
+    }
+  }
+
+}
+
+@media (min-width: 600px) {
+  /*full-screen*/
+  .showInsp{
+    #content{
+      max-width: 70%;
+    }
+    .inspectorWrapper
+    {
+      width: 30%;
+      display: block;
+    }
+  }
+}
+
+
+.showInsp{
+  #showInsp .fa:before
+  {
+    content:'\f00d';
+  }
+}
+
+button#showInsp {
+ float: right;
+ position: fixed;
+ right: 0px;
+ top: 60px;
+ font-size: 30px;
+}
+
+
+
+
