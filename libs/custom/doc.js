@@ -10,3 +10,11 @@ function docDeActive()
 {
  
 }
+
+
+function updateCanvasDim()
+{
+ var w = $("#inspectorWrapper #canvas-width").val();
+ var h = $("#inspectorWrapper #canvas-height").val();
+ theCanvas.setDimensions({width:w, height:h});
+}

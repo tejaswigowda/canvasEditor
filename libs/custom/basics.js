@@ -14,7 +14,7 @@ var inspectorDisp = {
 var header = {
   show: function(mu){
     mu = mu || "";
-    document.getElementById("headerTitle").innetHTML = mu;
+    document.getElementById("headerTitle").innerHTML = mu;
     $("#header").slideDown();
   },
   close: function(){
@@ -32,6 +32,7 @@ function showInsp(f)
   else{
     $("body").toggleClass("showInsp");
   }
+  if(CURRTOOL == null) inspectorDisp.show();
 }
 
 function toolSelected(tool)
