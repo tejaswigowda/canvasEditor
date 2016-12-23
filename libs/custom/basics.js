@@ -43,6 +43,8 @@ function toolSelected(tool)
   inspectorDisp.show(CURRTOOL)
 
   setTimeout(tool + "Active()", 100);
+  theCanvas.deactivateAll().renderAll();
+
 }
 
 

@@ -119,6 +119,10 @@ h1 {
     display: block;
     max-width: 100%;
     margin: auto;
+    overflow: auto;
+    max-height: calc(~'100% -' 60px);
+    position: absolute;
+    margin-top: 55px;
 }
 
 .image-container.target {
@@ -332,7 +336,7 @@ h1 {
 @media (min-width: 600px) {
   /*full-screen*/
   .showInsp{
-    #content{
+    .image-container{
       max-width: 70%;
     }
     .inspectorWrapper

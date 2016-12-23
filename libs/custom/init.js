@@ -49,9 +49,10 @@ function getXMLHTTPRequest()
 }
 
 
-function initTool(toolName, icon){
+function initTool(toolName, icon, next){
   $("#toolbar").append('<button type="button" onclick="toolSelected(' + "'" + toolName +"'" + ')" class="button button-default"><span class="icon ' + icon+'"></span></button>');
   loadFile(PATH + toolName + ".insp", function(data){
     $("#inspectorWrapper").append("<div class='inspector' id='insp-" + toolName + "'>" + data + "</div>");
+    if(next)next();
   });
 }
