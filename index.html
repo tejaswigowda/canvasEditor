@@ -69,7 +69,7 @@
               inspectorDisp.showActive();
             });
             theCanvas.on('selection:cleared', function() {
-              if(CURRTOOL != null){
+              if(CURRTOOL == null){
                 inspectorDisp.show();
               }
             });
