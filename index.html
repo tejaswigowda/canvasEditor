@@ -65,6 +65,15 @@
 
             var theCanvas = new fabric.Canvas('theCanvas');
 
+            theCanvas.on('object:selected', function() {
+              inspectorDisp.showActive();
+            });
+            theCanvas.on('selection:cleared', function() {
+              if(CURRTOOL != null){
+                inspectorDisp.show();
+              }
+            });
+
             function sstart() {
                 dkrm = new Darkroom('#target', {
                     // Size options

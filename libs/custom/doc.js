@@ -1,5 +1,7 @@
 var toolName = "doc";
-initTool(toolName, "fa fa-file");
+initTool(toolName, "fa fa-file", function(){
+  inspectorDisp.show();
+});
 /** FREE HAND */
 function docActive()
 {
